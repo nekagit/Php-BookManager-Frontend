@@ -37,16 +37,17 @@ class Buchliste {
      * Creates an HTML table for the book list view
      * @return string HTML string containing the table
      */
-    public function bookListTable() {
-        $output = file_get_contents("tpl/bookListTable.htm");
-        $tableContent = "";
-        
-        foreach ($this->list as $book) {
-            $tableContent .= $book->tableRow();
-        }
-        
-        return str_replace("<!--BOOK_TABLE-->", $tableContent, $output);
+   public function bookListTable() {
+    $output = file_get_contents("tpl/bookListTable.htm");
+    $tableContent = "";
+    
+    foreach ($this->list as $book) {
+        $tableContent .= $book->tableRow();
     }
+    
+    // Platzhalter mit einfachen geschweiften Klammern verwenden
+    return str_replace("{TABLE_BODY}", $tableContent, $output);
+}
     
     /**
      * Creates a grid of book tiles for the tile view

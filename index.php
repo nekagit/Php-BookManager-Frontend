@@ -13,7 +13,8 @@ class BuchVerwaltung {
     public function __construct() {
         $this->mainTemplate = file_get_contents('tpl/mainPage.htm');
         $this->handleRequest();
-        // Buchliste mit ausgewählter Datei und Sortierung initialisieren
+        
+        // Buchliste mit ausgewählter Datei initialisieren
         $this->buchListe = new Buchliste(
             'data/' . $this->selectedFile,
             $this->sorting === 'auf' ? 'SORT' : ''
@@ -51,7 +52,8 @@ class BuchVerwaltung {
             'FORM_ACTION' => $_SERVER['PHP_SELF'],
             'DATA_OPTIONS' => $this->getDataOptions(),
             'BOOK_TABLE' => $this->view === 'liste' ? $this->getBookContent() : '',
-            'BOOK_VIEW' => $this->view === 'kacheln' ? $this->getBookContent() : ''
+            'BOOK_VIEW' => $this->view === 'kacheln' ? $this->getBookContent() : '',
+            '{TABLE_BODY}' => $this->view === 'liste' ? $this->buchListe->bookListTable() : ''
         ];
         
         $output = $this->mainTemplate;
