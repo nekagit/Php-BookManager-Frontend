@@ -1,0 +1,102 @@
+ /* ******************************************************************************************
+  * ewsTable
+  * Basisdefinitionen für alle verwendeten Tabellen ausser den Seitenmenüs
+  * *****************************************************************************************/
+.ewsTable
+{
+	font-size: 12px;
+	text-align: right;
+	border-collapse: collapse;
+	border-radius: 15px;
+	margin: auto;
+	background: white;
+	color: #669;
+	box-shadow: 10px 10px 5px #ccc;
+}
+.ewsTable th
+{
+	padding: 12px;
+	font-weight: bold;
+	font-size:14px;
+	color: #fff;
+	background: #aaa;
+}
+.ewsTable td
+{
+	padding: 9px 12px;
+	border-top: 1px solid #fff;
+}
+.ewsTable tbody td,
+.ewsTable tfoot td {
+	background: rgba(190,190,190,0.25);
+}
+.ewsTable tbody tr:hover td
+{
+	color: #339;
+}
+.ewsTable tbody tr.highlight td,
+.ewsTable tbody tr td.highlight
+{
+	color:green;
+	font-size: 12px;
+	font-weight: bold;
+}
+.ewsTable thead tr.highlight th,
+.ewsTable thead tr th.highlight
+{
+	color:yellow;
+}
+.ewsTable thead tr:nth-child(1) th:nth-child(1) /* rounded top left */
+{
+	border-top-left-radius: 15px;
+	text-align:left;
+}
+.ewsTable thead tr:nth-child(1) th:nth-last-child(1) /* rounded top right */
+{
+	border-top-right-radius: 15px;
+	text-align:right;
+}
+.ewsTable tfoot tr:nth-last-child(1) td:nth-child(1) /* rounded bottom left */
+{
+	border-bottom-left-radius: 15px;
+	text-align:left;
+}
+.ewsTable tfoot tr:nth-last-child(1) td:nth-last-child(1) /* rounded bottom right */
+{
+	border-bottom-right-radius: 15px;
+	text-align:right;
+}
+.ewsTable tbody tr td:nth-child(1) /* leftmost column */
+{
+	text-align:left;
+}
+.ewsTable tbody tr td:nth-last-child(1) /* rightmost column */
+{
+	text-align:right;
+}
+
+
+.ewsTable thead th img,
+.ewsTable tbody td img,
+.ewsTable tfoot td img
+{
+	height: 15px;
+	vertical-align:middle;
+}
+
+.ewsTable tbody tr td.emptySquare {
+	background: rgba(255,0,0,0.25);
+}
+.ewsTable tbody tr td.nonemptySquare {
+	background: rgba(0,255,0,0.25);
+}
+
+
+.imageTile {
+	box-shadow: 10px 10px 5px #ccc;
+	border-radius: 15px;
+	height:300px;
+	width:200px;
+	margin:15px;
+}
+

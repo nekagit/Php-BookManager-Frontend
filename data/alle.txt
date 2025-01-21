@@ -1,0 +1,5 @@
+Rita Falk;Rehragoutrendezvous;2021;Krimi;978-3-423-26273-6;Rehragoutrendezvous.jpg
+Stephen Hawking, Lucy Hawking;Das Universum;2020;Fachbuch;978-3-570-17815-7;Das Universum.jpg;Universum
+Jean-Luc Bannalec;Bretonische Brandung;2013;Krimi;978-3-462-04496-6;Bretonische Brandung.jpg
+Arnaldur Indridason;Gletschergrab;1999;Krimi;978-3-404-26537-4;Gletschergrab.jpg
+Ephraim Kishon;Ein Apfel ist an allem schuld;1994;Satire;3-7844-2510-0;Ein Apfel ist an allem schuld.jpg

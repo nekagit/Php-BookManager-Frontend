@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!-- Dokument mainPage.htm -->
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Bücherverwaltung">
+		<meta name="keywords"    content="HTML">
+		<meta name="author"      content="ews">
+		<link rel="stylesheet" type="text/css" href="css/textformat.css">
+		<link rel="stylesheet" type="text/css" href="css/ewsTables.css">
+		<link type="image/png" rel="icon" href="img/book.png">
+		
+		<title>Bücherverwaltung</title>
+	</head>
+	<body style="padding:10px; overflow:scroll;">
+		<form id="mainForm" action="{FORM_ACTION}" method="post" style="width:100%;">
+			<article style="float:left; margin-top:10px; width:400px;">		
+				<table class="ewsTable" style="width:400px;">
+					<thead>
+						<tr>
+							<th colspan="4" class="highlight" style="text-align:center;">Hauptmenü</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Datei</td>
+							<td colspan="4" style="text-align:left;">
+								<select name="fileName" style="width:250px;">
+									{DATA_OPTIONS}
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Anzeige</td>
+							<td colspan="4" style="text-align:left;">
+								<div style="display: flex; gap: 3rem;">
+									<div title="Anzeige der Bücher in einer Liste">
+										<input type="radio" id="liste" value="liste" name="view" checked>
+										<label for="liste">Liste</label>
+									</div>
+									<div title="Anzeige der Bücher als Kacheln">
+										<input type="radio" id="kacheln" value="kacheln" name="view">
+										<label for="kacheln">Kacheln</label>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Sortierung</td>
+							<td colspan="4" style="text-align:left;">
+								<div style="display: flex; gap: 3rem;">
+									<div title="Bücher aufsteigend nach Titel sortiert">
+										<input type="radio" id="auf" value="auf" name="sorting">
+										<label for="auf">auf</label>
+									</div>
+									<div title="Bücher absteigend nach Titel sortiert">
+										<input type="radio" id="ab" value="ab" name="sorting">
+										<label for="ab">ab</label>
+									</div>
+									<div title="Bücher wie in Eingabedatei sortiert">
+										<input type="radio" id="orig" value="orig" name="sorting" checked>
+										<label for="orig">original</label>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5">
+								<button name="go"><img src="img/go.png"></button>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+
+			</article>
+			<article id="listArticle" class="bookListArticle" style="width:800px;">
+				{BOOK_TABLE}
+			</article>
+			<article id="viewArticle" class="bookListArticle" style="width:400px;">
+				{BOOK_VIEW}
+			</article>
+		</form>
+	</body>
+</html>
