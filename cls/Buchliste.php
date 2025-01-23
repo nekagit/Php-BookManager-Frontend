@@ -59,7 +59,9 @@ class Buchliste {
         }
         return $output;
     }
-    
+    public function getList() {
+        return $this->list;
+    }
     /**
      * Creates the complete HTML page
      * @param string $view View type ('list', 'tiles', or book index)

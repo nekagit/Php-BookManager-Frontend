@@ -10,6 +10,7 @@ class Buch {
     private $isbn;
     private $cover;
 
+    private $searchList = ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'];
 
     public function __construct($data) {
         $this-> author = $data[0];
@@ -27,7 +28,7 @@ class Buch {
     public function tableRow() {
         $template = file_get_contents('tpl/bookTableRow.htm');
         return str_replace(
-            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
+              $this->searchList,
             [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover],
             $template
         );
@@ -40,7 +41,7 @@ class Buch {
     public function tile() {
         $template = file_get_contents('tpl/bookTile.htm');
         return str_replace(
-            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
+              $this->searchList,
             [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover],
             $template
         );
@@ -48,30 +49,31 @@ class Buch {
 
     /**
      * Creates a details table for the current book object
-     * @return string HTML string using the tpl/bookDetails.htm template
+     * @return string HTML string containing the book details
      */
     public function bookDetails() {
-        $template = file_get_contents('tpl/bookDetails.htm');
-        return str_replace(
-            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
-            [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover],
-            $template
-        );
+        $details = '';
+        $details .= '<tr><td>Autor(en)</td><td>' . $this->author . '</td></tr>';
+        $details .= '<tr><td>Titel</td><td>' . $this->title . '</td></tr>';
+        $details .= '<tr><td>Jahr</td><td>' . $this->year . '</td></tr>';
+        $details .= '<tr><td>Genre</td><td>' . $this->genre . '</td></tr>';
+        $details .= '<tr><td>ISBN</td><td>' . $this->isbn . '</td></tr>';
+        return $details;
     }
 
-    /**
-     * Creates an individual table for the current book object
-     * @return string HTML string using the tpl/bookView.htm template
-     */
-    public function bookView() {
-        $template = file_get_contents('tpl/bookView.htm');
-        $details = $this->bookDetails();
-        return str_replace(
-            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
-            [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover, $details],
-            $template
-        );
-    }
+   /**
+ * Creates an individual table for the current book object
+ * @return string HTML string using the tpl/bookView.htm template
+ */
+public function bookView() {
+    $template = file_get_contents('tpl/bookView.htm');
+    $details = $this->bookDetails();
+    return str_replace(
+        ['{AUTHOR}', '{BOOK_TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}', '{BOOK_DETAILS}'],
+        [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover, $details],
+        $template
+    );
+}
 
     public function getTitle() {
         return $this->title;
