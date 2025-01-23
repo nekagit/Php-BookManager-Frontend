@@ -27,7 +27,7 @@ class Buch {
     public function tableRow() {
         $template = file_get_contents('tpl/bookTableRow.htm');
         return str_replace(
-            ['{{author}}', '{{title}}', '{{year}}', '{{genre}}', '{{isbn}}', '{{cover}}'],
+            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
             [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover],
             $template
         );
@@ -40,7 +40,7 @@ class Buch {
     public function tile() {
         $template = file_get_contents('tpl/bookTile.htm');
         return str_replace(
-            ['{{author}}', '{{title}}', '{{year}}', '{{genre}}', '{{isbn}}', '{{cover}}'],
+            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
             [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover],
             $template
         );
@@ -53,7 +53,7 @@ class Buch {
     public function bookDetails() {
         $template = file_get_contents('tpl/bookDetails.htm');
         return str_replace(
-            ['{{author}}', '{{title}}', '{{year}}', '{{genre}}', '{{isbn}}', '{{cover}}'],
+            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
             [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover],
             $template
         );
@@ -67,10 +67,14 @@ class Buch {
         $template = file_get_contents('tpl/bookView.htm');
         $details = $this->bookDetails();
         return str_replace(
-            ['{{author}}', '{{title}}', '{{year}}', '{{genre}}', '{{isbn}}', '{{cover}}', '{{details}}'],
+            ['{AUTHOR}', '{TITLE}', '{YEAR}', '{GENRE}', '{ISBN}', '{BOOK_COVER}'],
             [$this->author, $this->title, $this->year, $this->genre, $this->isbn, $this->cover, $details],
             $template
         );
+    }
+
+    public function getTitle() {
+        return $this->title;
     }
 }
 ?>

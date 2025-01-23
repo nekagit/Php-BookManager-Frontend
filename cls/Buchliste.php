@@ -45,7 +45,6 @@ class Buchliste {
         $tableContent .= $book->tableRow();
     }
     
-    // Platzhalter mit einfachen geschweiften Klammern verwenden
     return str_replace("{TABLE_BODY}", $tableContent, $output);
 }
     

@@ -14,15 +14,13 @@ class BuchVerwaltung {
         $this->mainTemplate = file_get_contents('tpl/mainPage.htm');
         $this->handleRequest();
         
-        // Buchliste mit ausgewählter Datei initialisieren
         $this->buchListe = new Buchliste(
             'data/' . $this->selectedFile,
             $this->sorting === 'auf' ? 'SORT' : ''
         );
     }
     
-    private function handleRequest() {
-        // POST-Parameter verarbeiten
+   private function handleRequest() {
         $this->selectedFile = $_POST['fileName'] ?? 'alle.txt';
         $this->view = $_POST['view'] ?? 'liste';
         $this->sorting = $_POST['sorting'] ?? 'orig';
@@ -49,7 +47,7 @@ class BuchVerwaltung {
     
     public function render() {
         $replacements = [
-            'FORM_ACTION' => $_SERVER['PHP_SELF'],
+            'FORM_ACTION' => htmlspecialchars($_SERVER['PHP_SELF']),
             'DATA_OPTIONS' => $this->getDataOptions(),
             'BOOK_TABLE' => $this->view === 'liste' ? $this->getBookContent() : '',
             'BOOK_VIEW' => $this->view === 'kacheln' ? $this->getBookContent() : '',
@@ -65,7 +63,6 @@ class BuchVerwaltung {
     }
 }
 
-// Anwendung starten
 $app = new BuchVerwaltung();
 $app->render();
 ?>
